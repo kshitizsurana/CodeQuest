@@ -567,8 +567,9 @@ input:focus {
   width: 100vw !important;
   height: calc(100vh - 80px) !important;
   object-fit: cover !important;
-  object-position: center 45% !important; /* Slightly adjusted vertical focal point */
-  transform: scale(1.15) !important; /* Subtle zoom for immersion */
+  object-position: center 45% !important;
+  transform: scale(1.15) !important;
+  transform-origin: top !important; /* Keep top edge locked at 80px */
   z-index: -1 !important;
   opacity: 1 !important;
   filter: contrast(1.1) saturate(1.2) !important;
