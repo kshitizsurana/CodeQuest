@@ -1,0 +1,24 @@
+.social-icons a{
+  display: inline-block;
+  margin-right: 15px;
+  color: #bbb;
+  text-decoration: none;
+}
+.social-icons a:hover {
+    color: #fff;
+}
+.leaderboard-table th,td {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.leaderboard-table th,
+.leaderboard-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.leaderboard-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
