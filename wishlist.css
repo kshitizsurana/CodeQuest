@@ -36,7 +36,6 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=1600&q=70");
     background-size: cover;
     background-position: center;
     opacity: 0.15;

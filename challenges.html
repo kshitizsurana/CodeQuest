@@ -41,6 +41,8 @@
   </header>
   <main>
     <section class="challenge-intro">
+      <video id="bg-video" class="hero-bg-video" autoplay loop muted playsinline></video>
+
       <h1 class="hero-title">EXPLORE MIND BOGGLING CHALLENGES TO EMBARK THIS JOURNEY</h1>
       <p class="section-subtitle">
         Choose your battlefield. Each challenge is tuned for high-intensity learning—no scripts, no shortcuts, only pure
@@ -127,5 +129,26 @@
     </div>
   </footer>
   <script src="challenges.js"></script>
-  </body>
+  
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var video = document.getElementById('bg-video');
+      var videoSrc = 'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8';
+      if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+          video.play().catch(function(e){});
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoSrc;
+        video.addEventListener('loadedmetadata', function() {
+          video.play().catch(function(e){});
+        });
+      }
+    });
+  </script>
+</body>
 </html>
