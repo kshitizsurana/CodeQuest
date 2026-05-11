@@ -530,12 +530,12 @@ input:focus {
   overflow: hidden !important;
   background: transparent !important;
   background-image: none !important;
-  min-height: 60vh !important;
+  min-height: 80vh !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  padding: 140px 20px 80px !important;
+  padding: 160px 20px 80px !important;
   margin: 0 !important;
   border-radius: 0 !important;
   border-left: none !important;
@@ -544,16 +544,25 @@ input:focus {
 }
 
 .hero-bg-video {
-  position: absolute !important;
+  position: fixed !important;
   top: 0 !important;
   left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+  width: 100vw !important;
+  height: 100vh !important;
   object-fit: cover !important;
-  z-index: 0 !important;
+  z-index: -1 !important;
   opacity: 1 !important;
   filter: contrast(1.1) saturate(1.2) !important;
   margin: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide legacy gradient overlays from index.css */
+.courses-hero::before, .courses-hero::after,
+.challenge-intro::before, .challenge-intro::after,
+.leaderboard-intro::before, .leaderboard-intro::after,
+.wishlist-hero::before, .wishlist-hero::after {
+  display: none !important;
 }
 
 .courses-hero .hero-title, .challenge-intro .hero-title, 
