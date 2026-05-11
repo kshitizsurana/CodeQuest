@@ -135,6 +135,8 @@
     </section>
   </main>
   <footer class="site-footer">
+    <video id="footer-video" class="footer-bg-video" autoplay loop muted playsinline></video>
+
     <div class="footer-inner">
       <p>Designed by Kshitiz Surana | CodeQuest © 2026</p>
       <div class="footer-col">
@@ -148,26 +150,32 @@
     </div>
   </footer>
   <script src="courses.js"></script>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      var video = document.getElementById('bg-video');
-      var videoSrc = 'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8';
-      if (Hls.isSupported()) {
-        var hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function() {
-          video.play().catch(function(e){});
-        });
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = videoSrc;
-        video.addEventListener('loadedmetadata', function() {
-          video.play().catch(function(e){});
-        });
+      function setupHlsVideo(videoId, videoSrc) {
+        var video = document.getElementById(videoId);
+        if (!video) return;
+        if (Hls.isSupported()) {
+          var hls = new Hls();
+          hls.loadSource(videoSrc);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED, function() {
+            video.play().catch(function(e){});
+          });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = videoSrc;
+          video.addEventListener('loadedmetadata', function() {
+            video.play().catch(function(e){});
+          });
+        }
       }
+      
+      setupHlsVideo('bg-video', 'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8');
+      setupHlsVideo('footer-video', 'https://stream.mux.com/Kec29dVyJgiPdtWaQtPuEiiGHkJIYQAVUJcNiIHUYeo.m3u8');
     });
   </script>
 </body>
+
 </html>
