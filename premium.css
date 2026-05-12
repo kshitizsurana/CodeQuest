@@ -143,6 +143,10 @@ video {
   align-items: center !important;
   gap: 8px !important; 
   text-decoration: none !important;
+}
+.mobile-only {
+  display: none !important;
+}
   line-height: 1 !important;
 }
 .nav-links a::after {
@@ -364,6 +368,18 @@ input:focus {
   }
   .brand-title {
     font-size: 1.2rem !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    line-height: 1 !important;
+  }
+  .brand {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+  }
+  .mobile-only {
+    display: flex !important;
   }
   .main-nav {
     position: fixed !important;

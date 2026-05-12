@@ -31,6 +31,9 @@
           <li><a class="active" href="challenges.html">CHALLENGES</a></li>
           <li><a href="leaderboard.html">LEADERBOARD</a></li>
           <li><a href="wishlist.html">WISHLIST <span id="wishlist-count" class="wishlist-badge">0</span></a></li>
+        
+          <li class="mobile-only"><a href="signup.html">SIGN UP</a></li>
+          <li class="mobile-only"><a href="login.html">LOGIN</a></li>
         </ul>
       </nav>
       <div class="header-actions">
@@ -135,15 +138,22 @@
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      
       function setupHlsVideo(videoId, videoSrc) {
         var video = document.getElementById(videoId);
         if (!video) return;
+        video.loop = true;
         if (Hls.isSupported()) {
-          var hls = new Hls();
+          var hls = new Hls({ enableWorker: true, lowLatencyMode: true });
           hls.loadSource(videoSrc);
           hls.attachMedia(video);
-          hls.on(Hls.Events.MANIFEST_PARSED, function() {
-            video.play().catch(function(e){});
+          hls.on(Hls.Events.MANIFEST_PARSED, function() { video.play().catch(function(e){}); });
+          video.addEventListener('ended', function() { video.play().catch(function(e){}); });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = videoSrc;
+          video.addEventListener('loadedmetadata', function() { video.play().catch(function(e){}); });
+        }
+      });
           });
         } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
           video.src = videoSrc;
