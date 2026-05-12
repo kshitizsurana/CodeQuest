@@ -143,12 +143,13 @@ video {
   align-items: center !important;
   gap: 8px !important; 
   text-decoration: none !important;
-}
-.mobile-only {
-  display: none !important;
-}
   line-height: 1 !important;
 }
+
+.nav-links li.mobile-only {
+  display: none !important;
+}
+
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -365,6 +366,7 @@ input:focus {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
+    height: 100% !important;
   }
   .brand-title {
     font-size: 1.2rem !important;
@@ -372,13 +374,16 @@ input:focus {
     display: flex !important;
     align-items: center !important;
     line-height: 1 !important;
+    padding: 0 !important;
   }
   .brand {
     display: flex !important;
     align-items: center !important;
     height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-  .mobile-only {
+  .nav-links li.mobile-only {
     display: flex !important;
   }
   .main-nav {
@@ -460,9 +465,14 @@ input:focus {
     justify-content: center !important;
     flex-direction: column !important;
     gap: 4px !important;
-    padding: 5px !important;
+    padding: 0 !important;
+    margin: 0 !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
+    position: relative !important; /* Override absolute from index.css */
+    top: auto !important; /* Override top from index.css */
+    right: auto !important; /* Let flexbox handle it */
+    align-self: center !important;
   }
   .nav-toggle-label span {
     width: 20px !important;

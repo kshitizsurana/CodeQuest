@@ -135,10 +135,10 @@
   </footer>
   <script src="challenges.js"></script>
 
+  
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      
       function setupHlsVideo(videoId, videoSrc) {
         var video = document.getElementById(videoId);
         if (!video) return;
@@ -153,16 +153,7 @@
           video.src = videoSrc;
           video.addEventListener('loadedmetadata', function() { video.play().catch(function(e){}); });
         }
-      });
-          });
-        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-          video.src = videoSrc;
-          video.addEventListener('loadedmetadata', function() {
-            video.play().catch(function(e){});
-          });
-        }
       }
-      
       setupHlsVideo('bg-video', 'https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8');
       setupHlsVideo('footer-video', 'https://stream.mux.com/Kec29dVyJgiPdtWaQtPuEiiGHkJIYQAVUJcNiIHUYeo.m3u8');
     });
